@@ -1,0 +1,59 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="my_invoice.list">
+      <field name="name">myInvoice list</field>
+      <field name="model">my_invoice.my_invoice</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="my_invoice.action_window">
+      <field name="name">myInvoice window</field>
+      <field name="res_model">my_invoice.my_invoice</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="my_invoice.action_server">
+      <field name="name">myInvoice server</field>
+      <field name="model_id" ref="model_my_invoice_my_invoice"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="myInvoice" id="my_invoice.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="my_invoice.menu_1" parent="my_invoice.menu_root"/>
+    <menuitem name="Menu 2" id="my_invoice.menu_2" parent="my_invoice.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="my_invoice.menu_1_list" parent="my_invoice.menu_1"
+              action="my_invoice.action_window"/>
+    <menuitem name="Server to list" id="my_invoice" parent="my_invoice.menu_2"
+              action="my_invoice.action_server"/>
+    -->
+  </data>
+</openerp>

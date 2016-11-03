@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mirror_image_order,mirror.image.order,model_mirror_image_order,point_of_sale.group_pos_user,1,1,1,1
+access_mirror_image_order_manager,mirror.image.order manager,model_mirror_image_order,point_of_sale.group_pos_manager,1,1,1,1
+access_advertisement_images,advertisement.images,model_advertisement_images,point_of_sale.group_pos_user,1,1,1,1
+access_advertisement_images_manager,advertisement.images manager,model_advertisement_images,point_of_sale.group_pos_manager,1,1,1,1
+access_screen_notification_msg,screen.notification.msg,model_screen_notification_msg,point_of_sale.group_pos_user,1,1,1,1
+access_screen_notification_msg_manager,screen.notification.msg manager,model_screen_notification_msg,point_of_sale.group_pos_manager,1,1,1,1

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_small_label_design,product_small_label_design,model_product_small_label_design,base.group_user,1,1,1,1
+access_ir_ui_view_label,access.ir.ui.view.label,base.model_ir_ui_view,base.group_user,1,1,1,0
+access_paperformat_small_label,access.paperformat.small.label,report.model_report_paperformat,base.group_user,1,1,1,0
+access_ir_model small_label,access.ir.model small_label,base.model_ir_model,base.group_user,1,0,0,0
+access_ir_model_fields small_label,access.ir.model.fields small_label,base.model_ir_model_fields,base.group_user,1,0,0,0
+access_product_product_small_label,access.product.product.small.label,product.model_product_product,base.group_user,1,0,0,0

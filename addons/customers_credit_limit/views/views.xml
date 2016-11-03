@@ -1,0 +1,50 @@
+<openerp>
+  <data>
+    <!-- inherit res.partner form view definition -->
+    
+    <record model="ir.ui.view" id="climit_credit_limit_partner_form">
+      <field name="name">Customer.Credit.Limit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="account.view_partner_property_form"/>
+      <field name="arch" type="xml">
+	<xpath expr="//field[@name='credit']" position="after">
+          <field name="credit_limit"/>
+	  <field name="credit_limit_without_tax"/>
+	  <field name="currency_id" invisible="1"/>
+	</xpath>
+      </field>
+    </record>
+
+        <record id="climit_override_credit_form" model="ir.ui.view">
+            <field name="name">climit.override.credit.form</field>
+            <field name="model">res.partner</field>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <form>
+		    <p>This customer will exceed the credit limit if you confirm this Sales Order!</p>
+                    <group>
+			<field name="name"  string="Customer" readonly="1"/>
+			<field name="currency_id" invisible="1"/>
+			<field name="credit_limit" readonly="1" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+			<field name="credit" readonly="1" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        <label for="confirmed_orders_total" string="Sales Orders" attrs="{'invisible':[('confirmed_orders_count','=', 0)]}"/>
+                        <div attrs="{'invisible':[('confirmed_orders_count','=', 0)]}">
+                            <field name="confirmed_orders_count" class="oe_inline"/> sales orders worth: <field name="confirmed_orders_total" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </div>
+                        <label for="draft_invoices_total" string="Invoices" attrs="{'invisible':[('draft_invoices_count','=', 0)]}"/>
+                        <div attrs="{'invisible':[('draft_invoices_count','=', 0)]}">
+                            <field name="draft_invoices_count" class="oe_inline"/> draft invoices worth: <field name="draft_invoices_total" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </div>
+			<field name="credit_limit_without_tax" readonly="1"/>
+
+                    </group>
+                    <footer>
+                        <button string="Confirm Anyway" type="object" name="confirm_override" class="oe_highlight" help="Click this button to override the credit limit for this customer"/>
+                        <button string="Close" special="cancel" class="oe_right oe_highlight" help="Click this button to close the window"/>
+                    </footer>
+
+                </form>
+            </field>
+	</record>
+  </data>
+</openerp>

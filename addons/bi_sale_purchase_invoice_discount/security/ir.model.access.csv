@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_document,account_document,model_discount_type,account.group_account_user,1,1,1,1
+access_saleman_documnet,saleman_documnet,model_discount_type,base.group_sale_salesman,1,1,1,1
+access_manager_document,manager_document,model_discount_type,base.group_sale_manager,1,1,1,1
+access_invoice_document,access_invoice_documen,model_discount_type,account.group_account_invoice,1,1,0,0
+access_purchase_document,purchase_document,model_discount_type,purchase.group_purchase_manager,1,1,1,1
+access_purchase_user,purchase_user,model_discount_type,purchase.group_purchase_user,1,1,1,1

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:
+-->
+<openerp>
+    <data>
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/pos_customer_screen/static/src/js/pos_mirror_image.js"></script>
+            </xpath>
+        </template>
+        <record id="ac_pos_config_form_view" model="ir.ui.view">
+            <field name="name">pos.config.form.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='features']" position="after"> 
+                    <group string="Advertisement Images/Video">
+                        <div>
+                            <field name="advertisement_image"/>
+                        </div>
+                    </group>
+                    <group>
+                        <field name="marquee_text"/>
+                        <field name="marque_color" widget="color"/>
+                        <field name="marque_bg_color" widget="color"/>
+                        <field name="marque_font_size"/>
+                        <field name="mute_video_sound"/>
+                        <field name="ac_width"/>
+                        <field name="ac_height"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+   
+        <record model="ir.ui.view" id="view_pos_advertisement_form">
+            <field name="name">advertisement.images.form.view</field>
+            <field name="model">advertisement.images</field>
+            <field name="arch" type="xml">
+                <form string="Point of Sale advertisement images">
+                    <sheet>
+                        <label  for="file_type" string="File Type"/>
+                        <field name="file_type"/>
+                        <group attrs="{'invisible': [('file_type', '=', 'video')]}">
+                            <div>
+                                <field name="ad_image" widget="image" class="oe_avatar oe_left" attrs="{'invisible': [('image_type','=','url')]}"/>
+                                <label  for="url" string="URL" attrs="{'invisible': [('image_type','=','image')]}"/>
+                                <h1><field name="url" class="oe_avatar oe_left" attrs="{'invisible': [('image_type','=','image')]}" /></h1>
+                            </div>
+                        </group>
+                        <group attrs="{'invisible': [('file_type', '=', 'image')]}">
+                            <div>
+                                <field name="ad_video" filename="ad_video_fname" class="oe_avatar oe_left" attrs="{'invisible': [('video_type','=','url')]}" />
+                                <label  for="ace_video_url" string="URL" attrs="{'invisible': [('video_type','=','video')]}"/>
+                                <h1><field name="ace_video_url" class="oe_avatar oe_left" attrs="{'invisible': [('video_type','=','video')]}" /></h1>
+                                <group>
+                                    <field name="is_youtube_url" attrs="{'invisible': [('video_type','=','video')]}"/>
+                                </group>
+                            </div>
+                        </group>
+                        <group col="2">
+                            <div class="oe_title">
+                                <label  for="image_type" string="Image Source" attrs="{'invisible': [('file_type', '=', 'video')]}"/>
+                                <field name="image_type" attrs="{'invisible': [('file_type', '=', 'video')]}"/>
+                                <label  for="video_type" string="Video Source" attrs="{'invisible': [('file_type', '=', 'image')]}"/>
+                                <field name="video_type" attrs="{'invisible': [('file_type', '=', 'image')]}"/>
+                                <label for="name" string="Name"/>
+                                <field name="name" class="oe_inline"/>
+                            </div>
+                            <div class="oe_title">
+                                <label for="sequence" string="Sequence"/>
+                                <h1><field name="sequence" class="oe_inline"/></h1>
+                                <label for="image_duration" string="Duration"/>
+                                <field name="image_duration"/>
+                            </div>
+                        </group>
+                        <group>
+                            <div class="oe_title">
+                                <label for="description" string="Description"/>
+                                <h1><field name="description" class="oe_inline"/></h1>
+                            </div>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_pos_advertisement_tree">
+            <field name="name">advertisement.images.tree.view</field>
+            <field name="model">advertisement.images</field>
+            <field name="arch" type="xml">
+                <tree string="Point of Sale advertisement images">
+                    <field name="name"/> 
+                    <field name="sequence"/>       
+                    <field name="description" /> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_pos_advertisement_pos">
+            <field name="name">Point of Sales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">advertisement.images</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_pos_advertisement_tree" />
+        </record>
+        <!--  <menuitem name="Advertisement Images" id="pos_advertisement" action="action_pos_advertisement_pos"
+            parent="point_of_sale.menu_point_config_product" 
+            sequence="30"/> -->
+    </data>
+</openerp>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="prod_small_lbl_rpt">
+            <span t-as="product" t-foreach="get_barcode_data(data)">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <div align="center" class="page">
+                        <div align="center" style="color:black;font-size:12px;">
+                            <span t-field="product.name"/>
+                        </div>
+                        <div align="center" style="color:black;font-size:12px;">
+                            <span t-field="product.default_code"/>
+                        </div>
+                        <div style="color:black;margin-top:15px;font-size:9px;">
+                            <span t-raw="get_barcode_string(product.barcode, 'EAN13', data)"/>
+                        </div>
+                        <!-- to print price with pricelist -->
+                        <!-- 
+                        <div align="center" style="color:black;font-size:12px;">
+                            <span t-esc="get_price(product, doc_id.pricelist_id)"/>
+                        </div> 
+                        -->
+                    </div>
+                </t>
+            </span>
+        </template>
+
+    </data>
+</openerp>
