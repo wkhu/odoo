@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_product_brand_form_view" model="ir.ui.view">
+            <field name="name">product.brand.form</field>
+            <field name="model">product.brand</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="logo" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_product_brand_tree_view" model="ir.ui.view">
+            <field name="name">product.brand.tree</field>
+            <field name="model">product.brand</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_product_brand_view" model="ir.actions.act_window">
+            <field name="name">Product Brand</field>
+            <field name="res_model">product.brand</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_product_brand_view"
+            id="menu_product_brand_form"
+            parent="base.menu_sale_config"/>
+
+<!--         <record id="ace_product_template_form_view" model="ir.ui.view">
+            <field name="name">product.template.common.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <group name="group_standard_price" position="after">
+                    <field name="external_reference" readonly="1"/>
+                    <field name="brand_id"/>
+                </group>
+                <xpath expr="//form/sheet/notebook/page/group/group[@name='group_general']/field[@name='default_code']" position="before">
+                        <field name="brand_id"/>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page/group[@name='inventory']/group/field[@name='categ_id']" position="before">
+                  <field name="external_reference" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+         -->
+        
+        <record id="product_template_form_view_inherit_ace" model="ir.ui.view">
+            <field name="name">product.template.form</field>
+            <field name="model">product.template</field>
+            <!-- <field name="mode">primary</field> -->
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="before">
+                    <field name="external_reference"/>
+                </xpath>
+                <field name="type" position="after">
+                        <field name="brand_id"/>
+                </field>
+            </field>
+          </record>
+        
+    </data>
+</openerp>

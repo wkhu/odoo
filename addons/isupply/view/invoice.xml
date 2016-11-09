@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="aces_inherit_supplier_invoice">
+        <field name="name">aces.inherit.supplier.invoice</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <button name="invoice_open" position="after">
+                <button name="create_shipment" type="object" string="Create Shipment" class="oe_highlight" states='open'/>
+            </button>
+            <field name="move_id" position="after">
+                <field name="picking_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    </data>
+</openerp>

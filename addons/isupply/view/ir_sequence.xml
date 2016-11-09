@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="seq_sale_quote" model="ir.sequence">
+            <field name="name">Sales Order Draft</field>
+            <field name="code">sale.quotation</field>
+            <field name="prefix">SQ</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_external_reference" model="ir.sequence">
+            <field name="name">External Reference</field>
+            <field name="code">external.reference</field>
+            <field name="prefix">HTS</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</openerp>
